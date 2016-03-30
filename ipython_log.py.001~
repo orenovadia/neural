@@ -1,0 +1,28 @@
+# IPython log file
+
+import sklearn
+import sklearn.learning_curve
+get_ipython().magic(u'logstart')
+get_ipython().magic(u'ls ')
+get_ipython().magic(u'ls -ltr')
+import sklearn
+import sklearn.learning_curve
+import sklearn.datasets
+data = sklearn.datasets.load_iris()
+dir(data)
+data.train
+data['DATA']
+data['train']
+dir(data)
+data.data
+data.values
+help(data)
+help(sklearn.datasets.load_iris)
+data.target
+data.data
+len(data.data)
+len(data.target)
+get_ipython().magic(u'cat ipython_log.py')
+get_ipython().magic(u'startlog')
+get_ipython().magic(u'logstart')
+get_ipython().magic(u'logstop')
