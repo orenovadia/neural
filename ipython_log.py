@@ -117,3 +117,24 @@ get_ipython().set_next_input(u'from sklearn.linear_model.Perceptron');get_ipytho
 get_ipython().magic(u'pinfo sklearn.linear_model.Perceptron')
 from sklearn.tree import DecisionTreeClassifier
 get_ipython().magic(u'pinfo DecisionTreeClassifier')
+get_ipython().magic(u'pinfo learning_curve')
+learning_curve(GaussianNB(),data.data,data.target,train_sizes=np.linspace(0.1,0.5,5))
+learning_curve(GaussianNB(),data.data,data.target,train_sizes=np.linspace(0.1,0.5,5),verbose=1)
+y
+y_test
+data.targe
+data.target
+y = data.target
+np.mean(y)
+np.std(y)
+plt
+plt.plot(y)
+plt.show()
+clf
+clf.__init__.__doc__
+get_ipython().magic(u'pinfo clf')
+get_ipython().magic(u'pinfo LogisticRegression')
+from sklearn.linear_model import 
+from sklearn.linear_model import ridge_regression
+get_ipython().magic(u'pinfo ridge_regression')
+quit()

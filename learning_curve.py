@@ -8,15 +8,15 @@ import sklearn.svm
 from sklearn.learning_curve import learning_curve
 from sklearn.linear_model.logistic import LogisticRegressionCV
 from sklearn.linear_model import Perceptron
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error,f1_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
-
+from sklearn.svm import SVC
 data = sklearn.datasets.load_iris()
 
 
 def learn_c(data, estimator, train_sizes=np.linspace(0.5, 0.9, 5)):
-    for train_size in []:#train_sizes:
+    for train_size in train_sizes:
         X_train, X_test, y_train, y_test = sklearn.cross_validation.train_test_split(
             data.data, data.target,
             train_size=train_size)
@@ -24,10 +24,11 @@ def learn_c(data, estimator, train_sizes=np.linspace(0.5, 0.9, 5)):
         clf.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         mse = mean_squared_error(y_test, y_pred)
+        fa_score = f1_score(y_test, y_pred)
         print '''\
         Train size  : %s
         MSE         :%s
-        Estimator   : %s''' % (train_size, mse, 'est')
+        F score     : %s''' % (train_size, mse, fa_score)
 
         print '-' * 30
 
@@ -56,6 +57,6 @@ def learn_c(data, estimator, train_sizes=np.linspace(0.5, 0.9, 5)):
     plt.legend(loc='best')
 
 
-for e in GaussianNB, LogisticRegressionCV,Perceptron,DecisionTreeClassifier:
+for e in GaussianNB, LogisticRegressionCV,Perceptron,DecisionTreeClassifier,SVC:
     learn_c(data, e)
 plt.show()
