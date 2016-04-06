@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from mpl_toolkits.mplot3d import Axes3D
-
+import numpy as np
 
 def compress_image_with_clusters():
     img = mpimg.imread('bird_small.png')
@@ -26,9 +26,14 @@ def compress_image_with_clusters():
         ax = fig.add_subplot(111,projection='3d')
         #ax=fig.add_subplot(projection='3d')
         ax.scatter(X[:,0],X[:,1],X[:,2],c=clf.labels_)
-        plt.title('3d centeroid membership')
+
+        plt.title('3d centeroid membership with PCA component vectors')
         pca = PCA(n_components=2)
         pca.fit(X)
+
+        ax.quiver(pca.components_[:,0],pca.components_[:,1],pca.components_[:,2],
+                  pca.components_[:,0],pca.components_[:,1],pca.components_[:,2],
+                  5,color='r')
         X_pca = pca.transform(X)
         plt.figure()
         plt.title('PCA 2d centeroid membership')
